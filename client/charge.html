@@ -21,29 +21,29 @@
     </div>
     <script charset="utf-8">
       // Step 1. Create payment intent
-      var params = new URLSearchParams(window.location.search);
-      var customer = params.get('cus');
-      let pm = params.get('pm');
-      let clientSecret;
-      fetch('/payment_intents', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          customer: customer
-        }),
-      })
-      .then((response) => response.json())
-      .then((data) => {
-        clientSecret = data.client_secret;
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
+      // var params = new URLSearchParams(window.location.search);
+      // var customer = params.get('cus');
+      // let pm = params.get('pm');
+      // let clientSecret;
+      // fetch('/payment_intents', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify({
+      //     customer: customer
+      //   }),
+      // })
+      // .then((response) => response.json())
+      // .then((data) => {
+      //   clientSecret = data.client_secret;
+      // })
+      // .catch((error) => {
+      //   console.error('Error:', error);
+      // });
 
 
-      var stripe = Stripe('pk_test_vAZ3gh1LcuM7fW4rKNvqafgB00DR9RKOjN');
+      var stripe = Stripe('pk_test_ir7OQzjniYOfcCpi2g15UAPl00X855Xd10');
 
       var elements = stripe.elements();
       var cvcElement = elements.create('cardCvc');

@@ -11,6 +11,8 @@ set :public_folder, File.join(File.dirname(__FILE__), ENV['STATIC_DIR'])
 set :views, File.join(File.dirname(__FILE__), ENV['STATIC_DIR'])
 set :port, 4242
 
+puts File.join(settings.public_folder, 'index.html')
+
 get '/' do
   content_type 'text/html'
   send_file File.join(settings.public_folder, 'index.html')
@@ -19,7 +21,7 @@ end
 post '/setup_intents' do
   content_type 'application/json'
   data = JSON.parse(request.body.read)
-  Stripe::SetupIntent.create.to_json
+  Stripe::SetupIntent.create(data).to_json
 end
 
 post '/payment_intents' do

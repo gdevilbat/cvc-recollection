@@ -1,0 +1,21 @@
+# Version
+version: '3.8'
+
+services:
+  ruby:
+    container_name: cvc_recollection_ruby
+    build:
+      context: ./
+      dockerfile: docker/ruby.dockerfile
+    command: >
+      bash -c "ruby server.rb -o 0.0.0.0"
+    volumes:
+      - .:/code
+    ports:
+      - "127.0.0.212:8080:4242"
+    networks:
+      - cvc_recollection_network
+  
+networks:
+  cvc_recollection_network:
+    name: cvc_recollection_network
